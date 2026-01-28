@@ -1,5 +1,4 @@
 #!/bin/bash
-chown ec2-user:ec2-user /home/ec2-user/.aws
 dnf install -y java git
 wget https://dlcdn.apache.org/nifi/2.7.2/nifi-2.7.2-bin.zip
 unzip nifi-2.7.2-bin.zip -d /home/ec2-user
