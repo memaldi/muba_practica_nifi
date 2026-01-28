@@ -15,3 +15,9 @@ export NORMAL_CHOLESTEROL_BUCKET=normal-cholesterol-muba-$(uuidgen)
 aws s3api create-bucket --bucket $HEART_DISEASE_BUCKET
 aws s3api create-bucket --bucket $HIGH_CHOLESTEROL_BUCKET
 aws s3api create-bucket --bucket $NORMAL_CHOLESTEROL_BUCKET
+
+cat <<EOF > /etc/profile.d/buckets.sh
+export HEART_DISEASE_BUCKET=$HEART_DISEASE_BUCKET
+export HIGH_CHOLESTEROL_BUCKET=$HIGH_CHOLESTEROL_BUCKET
+export NORMAL_CHOLESTEROL_BUCKET=$NORMAL_CHOLESTEROL_BUCKET
+EOF
