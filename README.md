@@ -11,7 +11,7 @@ git clone https://github.com/memaldi/muba_practica_nifi
 En primer lugar, vamos a lanzar la máquina virtual en la que vamos a instalar NiFi. Para ello, el primer paso es crear el grupo de seguridad que nos va a permitir conectarnos al puerto en el cual escuchará Nifi (`8880`).
 
 ```
-aws ec2 create-security-group --group-name nifi-sg --description "Grupo de seguridad para Apache NiFi"
+aws ec2 create-security-group --group-name nifi-sg --description "Grupo de seguridad para Apache NiFi" --region us-east-1
 ```
 
 Este comando mostrará por pantalla el ID del grupo de seguridad recién creado, algo del estilo:
@@ -25,7 +25,7 @@ Este comando mostrará por pantalla el ID del grupo de seguridad recién creado,
 Es importante conservar este identificador, ya que lo necesitaremos para comandos posteriores. Una vez creado el grupo de seguridad, habilitaremos la regla de entrada que permitirá que nos conectemos a NiFi. Recuerda sustituir `<GroupId>` por el ID de tu grupo de seguridad.
 
 ```
-aws ec2 authorize-security-group-ingress --group-id <GroupId> --protocol tcp --port 8880 --cidr 0.0.0.0/0
+aws ec2 authorize-security-group-ingress --group-id <GroupId> --protocol tcp --port 8880 --cidr 0.0.0.0/0 --region us-east-1
 ```
 
 Una vez creado el grupo de seguridad y las reglas necesarias, podemos proceder a crear la máquina virtual. Este comando va a crear una máquina virtual que tendrá asociado el grupo de seguridad creado anteriormente. No olvides sustituir `<GroupId>` por el ID de tu grupo de seguridad.
